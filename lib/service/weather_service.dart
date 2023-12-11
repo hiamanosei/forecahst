@@ -20,16 +20,20 @@ class WeatherService {
     }
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
+
     List<Placemark> placemarks =
         await placemarkFromCoordinates(position.latitude, position.longitude);
     //get city with weather
+
     String? city = placemarks[0].locality;
+
     return city ?? 'City could not load';
   }
 
   Future getWeather(String city) async {
     http.Response response = await http
         .get(Uri.parse('$baseURL/current.json?key=$kAPIKey&q=$city&aqi=no'));
+    print((response.statusCode));
     if (response.statusCode == 200) {
       return Weather.fromJson(jsonDecode(response.body));
     } else {

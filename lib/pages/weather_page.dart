@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:forecahst/model/weather_model.dart';
 import 'package:forecahst/service/weather_service.dart';
+import 'package:lottie/lottie.dart';
 
 class WeatherPage extends StatefulWidget {
   const WeatherPage({super.key});
@@ -35,10 +36,39 @@ class _WeatherPageState extends State<WeatherPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade200,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [Text(_weather?.city ?? 'loading city')],
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Center(
+            child: Column(
+              children: [
+                // Text(
+                //   _weather?.country ?? 'loading country',
+                //   style:
+                //       const TextStyle(fontSize: 35, fontWeight: FontWeight.w700),
+                //   textAlign: TextAlign.center,
+                // ),
+                // const SizedBox(
+                //   height: 15.0,
+                // ),
+                Text(
+                  _weather?.city ?? 'loading city',
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.w700),
+                ),
+              ],
+            ),
+          ),
+          Text(_weather?.condition ?? 'loading condition'),
+          Lottie.asset('lib/images/clear sky.json'),
+          Text(
+            "${_weather?.temperature} °C",
+            style: const TextStyle(
+                fontSize: 35, fontWeight: FontWeight.w500, wordSpacing: 10),
+          )
+        ],
       ),
     );
   }
