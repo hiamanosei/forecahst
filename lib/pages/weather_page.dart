@@ -36,7 +36,7 @@ class _WeatherPageState extends State<WeatherPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
+      backgroundColor: Colors.black54,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -44,15 +44,6 @@ class _WeatherPageState extends State<WeatherPage> {
           Center(
             child: Column(
               children: [
-                // Text(
-                //   _weather?.country ?? 'loading country',
-                //   style:
-                //       const TextStyle(fontSize: 35, fontWeight: FontWeight.w700),
-                //   textAlign: TextAlign.center,
-                // ),
-                // const SizedBox(
-                //   height: 15.0,
-                // ),
                 Text(
                   _weather?.city ?? 'loading city',
                   style: const TextStyle(

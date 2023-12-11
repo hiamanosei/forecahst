@@ -10,6 +10,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: WeatherPage());
+    return MaterialApp(
+      home: const WeatherPage(),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark(),
+    );
   }
 }

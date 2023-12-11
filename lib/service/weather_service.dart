@@ -9,7 +9,7 @@ class WeatherService {
   WeatherService({required this.kAPIKey});
   final String baseURL = 'http://api.weatherapi.com/v1';
   final String kAPIKey;
-  //get location
+  //get location in longitude and latitude
   Future<String> getLocation() async {
     LocationPermission permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
@@ -23,17 +23,18 @@ class WeatherService {
 
     List<Placemark> placemarks =
         await placemarkFromCoordinates(position.latitude, position.longitude);
-    //get city with weather
+    //get city
 
     String? city = placemarks[0].locality;
 
     return city ?? 'City could not load';
   }
 
+//getting  weather with city location
   Future getWeather(String city) async {
     http.Response response = await http
         .get(Uri.parse('$baseURL/current.json?key=$kAPIKey&q=$city&aqi=no'));
-    print((response.statusCode));
+
     if (response.statusCode == 200) {
       return Weather.fromJson(jsonDecode(response.body));
     } else {
