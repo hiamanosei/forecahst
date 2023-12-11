@@ -12,7 +12,7 @@
 - **Real-time Updates**: Stay informed with real-time weather updates to plan ahead effectively.
 
 ## Installation
-1. Clone the repository from [GitHub Repo URL].
+1. Clone the repository from  https://github.com/hiamanosei/forecahst .
 2. Install the necessary dependencies using [package manager].
 3. Run the app on your preferred mobile platform (iOS/Android) using [specific commands].
 
