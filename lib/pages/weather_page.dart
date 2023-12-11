@@ -33,6 +33,30 @@ class _WeatherPageState extends State<WeatherPage> {
     super.initState();
   }
 
+  String checkCondition(String condition) {
+    switch (condition.toLowerCase()) {
+      case 'sunny':
+        return 'lib/images/sunny.json';
+      case 'partly cloudy':
+        return 'lib/images/partly cloudy.json';
+      case 'mist':
+        return 'lib/images/mist.json';
+      case 'partly shower':
+        return 'lib/images/partly shower.json';
+      case 'snow':
+        return 'lib/images/snow.json';
+      case 'storm':
+        return 'lib/images/storm.json';
+      case 'thunder':
+        return 'lib/images/thunder.json';
+      case 'windy':
+        return 'lib/images/windy.json';
+
+      default:
+        return 'lib/images/clear sky.json';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,8 +76,8 @@ class _WeatherPageState extends State<WeatherPage> {
               ],
             ),
           ),
+          Lottie.asset(checkCondition(_weather?.condition ?? "")),
           Text(_weather?.condition ?? 'loading condition'),
-          Lottie.asset('lib/images/clear sky.json'),
           Text(
             "${_weather?.temperature} °C",
             style: const TextStyle(
